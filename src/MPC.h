@@ -7,7 +7,11 @@
 using namespace std;
 
 class MPC {
- public:
+public:
+
+  vector<double> predict_xvals;
+  vector<double> predict_yvals;
+  
   MPC();
 
   virtual ~MPC();

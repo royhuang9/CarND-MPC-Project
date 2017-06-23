@@ -2,6 +2,39 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Introduction
+This is a MPC implementation. Comparing to PID control, the car drives on road smoothly and steadily.
+
+## The Model
+### The State
+Four state is used in the model:
+#### px 
+The x-axis value of the current location of car in global coordinate.
+#### py
+The y-axis value of the current location of car in global coordinate.
+#### psi
+The bearing of car in global coordinate.
+#### v
+The velocity of the vehicle, this is a scalar value.
+#### cte
+Cross Track Error, this is the distance between the desired position and actual position.
+#### epsi
+The difference between the desired orintation of car and the actual. The desired bearing is tangent to the fitted curve.
+
+### Actuators
+Two actuators are used, one the steering angle, the other is throttle which also include brake if the value is negative.
+#### delta
+It is the steering angle of the car.
+#### a
+This stands the throttle. When it is positive, the car is accelerating. When it is negative, the car is decreasing.
+
+### Update equations
+The following are the equations to update the state in terms of actuators.
+![Updates](images/updates.png)
+
+## Horizon
+Horizon T, number of timesteps N and time elapsed between actuations dt are hyperparameters. Because car drive at velocity about 50 MPH, the horizon is choosed about 1 second.
+I tried N=10, dt=0.1 and N=25, dt=0.05. With both the parameters combination the car can drive on road  well, but with N=10, dt=0.1, when car drive through the bend, it drift less from center of road. So I choose the this combination.
 
 ## Dependencies
 
